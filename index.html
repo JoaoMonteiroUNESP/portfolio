@@ -1,0 +1,715 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Portfólio de João Monteiro — engenharia de dados, machine learning, visão computacional e IoT. Projetos com código aberto e demos.">
+<meta property="og:title" content="João Monteiro — Portfólio">
+<meta property="og:description" content="Dados · Engenharia · Machine Learning · IoT">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2288%22>📡</text></svg>">
+<title>João Monteiro</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;450;500;600&display=swap">
+
+<style>
+  /* ============ TOKENS ============ */
+  :root {
+    --bg:        #eceeeb;
+    --surface:   #f6f7f4;
+    --surface-2: #e6e9e4;
+    --ink:       #161d1a;
+    --muted:     #56635d;
+    --faint:     #7b877f;
+    --line:      #d5dad3;
+    --line-soft: #e0e4dd;
+    --accent:    #0f6d6b;
+    --accent-ink:#0b5250;
+    --accent-soft:#d3e6e4;
+    --warm:      #b5701f;
+    --live:      #2f8f5b;
+    --shadow:    0 1px 2px rgba(20,32,29,.04), 0 8px 24px -12px rgba(20,32,29,.18);
+    --grid-line: rgba(15,109,107,.10);
+    --plot:      #0f6d6b;
+    --plot-2:    #b5701f;
+    --plot-ground: #f6f7f4;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg:        #0e1412;
+      --surface:   #151d1a;
+      --surface-2: #1c2521;
+      --ink:       #e9efea;
+      --muted:     #9aa8a1;
+      --faint:     #74827b;
+      --line:      #26302c;
+      --line-soft: #202a26;
+      --accent:    #4bb5b0;
+      --accent-ink:#7fd0cb;
+      --accent-soft:#12312f;
+      --warm:      #d99b4e;
+      --live:      #4bbd7e;
+      --shadow:    0 1px 2px rgba(0,0,0,.3), 0 12px 30px -14px rgba(0,0,0,.6);
+      --grid-line: rgba(75,181,176,.13);
+      --plot:      #4bb5b0;
+      --plot-2:    #d99b4e;
+      --plot-ground: #101815;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg:        #0e1412;
+    --surface:   #151d1a;
+    --surface-2: #1c2521;
+    --ink:       #e9efea;
+    --muted:     #9aa8a1;
+    --faint:     #74827b;
+    --line:      #26302c;
+    --line-soft: #202a26;
+    --accent:    #4bb5b0;
+    --accent-ink:#7fd0cb;
+    --accent-soft:#12312f;
+    --warm:      #d99b4e;
+    --live:      #4bbd7e;
+    --shadow:    0 1px 2px rgba(0,0,0,.3), 0 12px 30px -14px rgba(0,0,0,.6);
+    --grid-line: rgba(75,181,176,.13);
+    --plot:      #4bb5b0;
+    --plot-2:    #d99b4e;
+    --plot-ground: #101815;
+  }
+
+  /* ============ BASE ============ */
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "IBM Plex Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  a { color: inherit; text-decoration: none; }
+  ::selection { background: var(--accent); color: #fff; }
+
+  .wrap { width: min(1120px, 92vw); margin-inline: auto; }
+
+  .mono {
+    font-family: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  }
+  .eyebrow {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: .74rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--accent-ink);
+    font-weight: 500;
+  }
+  h1, h2, h3 {
+    font-family: "Bricolage Grotesque", "IBM Plex Sans", sans-serif;
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -.01em;
+    text-wrap: balance;
+    margin: 0;
+  }
+
+  /* ============ TOP BAR ============ */
+  header.topbar {
+    position: sticky; top: 0; z-index: 20;
+    background: color-mix(in srgb, var(--bg) 86%, transparent);
+    backdrop-filter: saturate(1.4) blur(10px);
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .topbar .row {
+    display: flex; align-items: center; justify-content: space-between;
+    height: 60px;
+  }
+  .brand { display: flex; align-items: center; gap: .6rem; font-weight: 600; }
+  .brand .dot {
+    width: 10px; height: 10px; border-radius: 50%;
+    background: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft);
+  }
+  .brand .mono { font-size: .95rem; letter-spacing: -.01em; }
+  nav.links { display: flex; align-items: center; gap: 1.4rem; }
+  nav.links a { font-size: .9rem; color: var(--muted); transition: color .15s; }
+  nav.links a:hover { color: var(--ink); }
+  @media (max-width: 680px) { nav.links a.navlink { display: none; } }
+  .toggle {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 38px; height: 38px; border-radius: 9px;
+    border: 1px solid var(--line); background: var(--surface);
+    color: var(--muted); cursor: pointer; transition: color .15s, border-color .15s;
+  }
+  .toggle:hover { color: var(--ink); border-color: var(--accent); }
+  .toggle svg { width: 18px; height: 18px; }
+  .toggle .moon { display: none; }
+  :root[data-theme="dark"] .toggle .sun { display: none; }
+  :root[data-theme="dark"] .toggle .moon { display: block; }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .toggle .sun { display: none; }
+    :root:not([data-theme="light"]) .toggle .moon { display: block; }
+  }
+
+  /* ============ HERO ============ */
+  .hero { padding: clamp(3rem, 8vw, 6rem) 0 clamp(2.5rem, 5vw, 4rem); }
+  .hero-grid {
+    display: grid; grid-template-columns: 1.15fr .85fr; gap: clamp(1.5rem, 4vw, 3.5rem);
+    align-items: center;
+  }
+  @media (max-width: 860px) { .hero-grid { grid-template-columns: 1fr; } }
+  .hero h1 { font-size: clamp(2.4rem, 6vw, 4rem); font-weight: 800; }
+  .hero h1 .accent { color: var(--accent); }
+  .hero .lede {
+    margin-top: 1.2rem; font-size: clamp(1.02rem, 1.6vw, 1.18rem);
+    color: var(--muted); max-width: 46ch;
+  }
+  .role-line { margin-top: 1.4rem; display: flex; flex-wrap: wrap; gap: .5rem; }
+  .role-line .tag {
+    font-family: "IBM Plex Mono", monospace; font-size: .76rem; letter-spacing: .04em;
+    padding: .32rem .6rem; border: 1px solid var(--line); border-radius: 6px;
+    color: var(--ink); background: var(--surface);
+  }
+  .cta-row { margin-top: 2rem; display: flex; flex-wrap: wrap; gap: .75rem; }
+  .btn {
+    display: inline-flex; align-items: center; gap: .5rem;
+    padding: .7rem 1.15rem; border-radius: 9px; font-size: .92rem; font-weight: 500;
+    border: 1px solid var(--line); background: var(--surface); color: var(--ink);
+    transition: transform .12s, border-color .15s, background .15s;
+  }
+  .btn svg { width: 17px; height: 17px; }
+  .btn:hover { transform: translateY(-1px); border-color: var(--accent); }
+  .btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .btn.primary:hover { background: var(--accent-ink); border-color: var(--accent-ink); }
+
+  /* instrument panel */
+  .panel {
+    position: relative; border: 1px solid var(--line); border-radius: 14px;
+    background: var(--plot-ground); box-shadow: var(--shadow); overflow: hidden;
+  }
+  .panel .panel-head {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: .6rem .85rem; border-bottom: 1px solid var(--line-soft);
+    font-family: "IBM Plex Mono", monospace; font-size: .7rem; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--faint);
+  }
+  .panel .panel-head .live {
+    display: inline-flex; align-items: center; gap: .4rem; color: var(--live);
+  }
+  .panel .panel-head .live .pulse {
+    width: 7px; height: 7px; border-radius: 50%; background: var(--live);
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--live) 60%, transparent);
+    animation: pulse 2.4s infinite;
+  }
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--live) 55%, transparent); }
+    70% { box-shadow: 0 0 0 7px transparent; }
+    100% { box-shadow: 0 0 0 0 transparent; }
+  }
+  @media (prefers-reduced-motion: reduce) { .panel .panel-head .live .pulse { animation: none; } }
+  #signal { display: block; width: 100%; height: 260px; }
+  .panel .readout {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    border-top: 1px solid var(--line-soft);
+  }
+  .panel .readout .cell { padding: .7rem .85rem; border-right: 1px solid var(--line-soft); }
+  .panel .readout .cell:last-child { border-right: 0; }
+  .panel .readout .k { font-family: "IBM Plex Mono", monospace; font-size: .64rem; letter-spacing: .12em; text-transform: uppercase; color: var(--faint); }
+  .panel .readout .v { font-family: "IBM Plex Mono", monospace; font-size: 1.05rem; font-weight: 600; color: var(--ink); margin-top: .15rem; font-variant-numeric: tabular-nums; }
+  .panel .readout .v span { color: var(--accent); }
+
+  /* ============ MARQUEE / STACK ============ */
+  .stack { border-block: 1px solid var(--line-soft); padding: 1.1rem 0; }
+  .stack .inner { display: flex; flex-wrap: wrap; gap: .5rem .5rem; align-items: center; }
+  .stack .label { font-family: "IBM Plex Mono", monospace; font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; color: var(--faint); margin-right: .4rem; }
+  .chip {
+    font-family: "IBM Plex Mono", monospace; font-size: .78rem;
+    padding: .28rem .55rem; border-radius: 6px; background: var(--surface-2); color: var(--muted);
+  }
+
+  /* ============ SECTIONS ============ */
+  section { padding: clamp(3rem, 7vw, 5.5rem) 0; }
+  .sec-head { margin-bottom: 2.2rem; }
+  .sec-head h2 { font-size: clamp(1.6rem, 3.4vw, 2.3rem); margin-top: .5rem; }
+  .sec-head p { color: var(--muted); margin: .7rem 0 0; max-width: 60ch; }
+
+  /* ============ PROJECTS ============ */
+  .projects { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.1rem; }
+  @media (max-width: 760px) { .projects { grid-template-columns: 1fr; } }
+  .card {
+    position: relative; display: flex; flex-direction: column;
+    background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
+    padding: 1.4rem 1.4rem 1.25rem; box-shadow: var(--shadow);
+    transition: transform .14s, border-color .15s;
+  }
+  .card:hover { transform: translateY(-2px); border-color: var(--accent); }
+  .card.feature { grid-column: 1 / -1; }
+  .card.feature .card-body { max-width: 66ch; }
+  .card-top { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: .9rem; }
+  .domain {
+    font-family: "IBM Plex Mono", monospace; font-size: .68rem; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--accent-ink);
+    padding: .26rem .5rem; border: 1px solid var(--accent-soft); border-radius: 6px;
+    background: var(--accent-soft);
+  }
+  .badge-live {
+    font-family: "IBM Plex Mono", monospace; font-size: .66rem; letter-spacing: .08em;
+    text-transform: uppercase; color: var(--live);
+    display: inline-flex; align-items: center; gap: .38rem;
+  }
+  .badge-live .pulse { width: 7px; height: 7px; border-radius: 50%; background: var(--live); animation: pulse 2.4s infinite; }
+  @media (prefers-reduced-motion: reduce) { .badge-live .pulse { animation: none; } }
+  .card h3 { font-size: 1.32rem; }
+  .card.feature h3 { font-size: clamp(1.5rem, 3vw, 2rem); }
+  .card .oneline { color: var(--accent-ink); font-weight: 500; margin: .35rem 0 .7rem; font-size: .96rem; }
+  .card .desc { color: var(--muted); font-size: .93rem; margin: 0; }
+  .techs { display: flex; flex-wrap: wrap; gap: .4rem; margin: 1.1rem 0 1.2rem; }
+  .tech {
+    font-family: "IBM Plex Mono", monospace; font-size: .72rem;
+    color: var(--muted); padding: .22rem .5rem; border: 1px solid var(--line-soft); border-radius: 5px;
+  }
+  .card-links { margin-top: auto; display: flex; gap: 1.1rem; padding-top: .4rem; border-top: 1px solid var(--line-soft); }
+  .card-links a {
+    display: inline-flex; align-items: center; gap: .4rem; font-size: .86rem; font-weight: 500;
+    color: var(--ink); padding-top: .9rem; transition: color .15s;
+  }
+  .card-links a:hover { color: var(--accent); }
+  .card-links a svg { width: 15px; height: 15px; }
+  .card-links a.muted { color: var(--faint); }
+
+  /* ============ ABOUT ============ */
+  .about-grid { display: grid; grid-template-columns: 1.3fr .7fr; gap: clamp(1.5rem, 4vw, 3rem); align-items: start; }
+  @media (max-width: 760px) { .about-grid { grid-template-columns: 1fr; } }
+  .about p { color: var(--muted); font-size: 1.02rem; }
+  .about p + p { margin-top: 1rem; }
+  .about strong { color: var(--ink); font-weight: 600; }
+  .facts { display: flex; flex-direction: column; gap: 0; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: var(--surface); }
+  .facts .fact { padding: .95rem 1.1rem; border-bottom: 1px solid var(--line-soft); }
+  .facts .fact:last-child { border-bottom: 0; }
+  .facts .k { font-family: "IBM Plex Mono", monospace; font-size: .66rem; letter-spacing: .12em; text-transform: uppercase; color: var(--faint); }
+  .facts .v { margin-top: .2rem; font-size: .95rem; color: var(--ink); }
+
+  /* ============ CONTACT / FOOTER ============ */
+  .contact { text-align: center; }
+  .contact h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); }
+  .contact p { color: var(--muted); max-width: 48ch; margin: 1rem auto 2rem; }
+  .contact .cta-row { justify-content: center; }
+  footer.foot { border-top: 1px solid var(--line-soft); padding: 2rem 0 3rem; }
+  footer.foot .row { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+  footer.foot .mono { font-size: .78rem; color: var(--faint); letter-spacing: .04em; }
+  footer.foot .social { display: flex; gap: 1.2rem; }
+  footer.foot .social a { color: var(--muted); font-size: .85rem; transition: color .15s; }
+  footer.foot .social a:hover { color: var(--accent); }
+
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+  .note {
+    font-family: "IBM Plex Mono", monospace; font-size: .7rem; color: var(--warm);
+    border: 1px dashed color-mix(in srgb, var(--warm) 45%, var(--line));
+    border-radius: 6px; padding: .12rem .4rem;
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap row">
+    <div class="brand">
+      <span class="dot" aria-hidden="true"></span>
+      <span class="mono">joão&nbsp;monteiro</span>
+    </div>
+    <nav class="links">
+      <a class="navlink" href="#projetos">Projetos</a>
+      <a class="navlink" href="#sobre">Sobre</a>
+      <a class="navlink" href="#contato">Contato</a>
+      <button class="toggle" id="themeToggle" aria-label="Alternar tema" title="Alternar tema claro/escuro">
+        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.5M12 19.5V22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M2 12h2.5M19.5 12H22M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg>
+        <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <div class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow">Dados · Engenharia · Machine Learning · IoT</p>
+        <h1>Do sinal bruto ao<br><span class="accent">modelo em produção.</span></h1>
+        <p class="lede">
+          Engenheiro de Produção em formação na FEG-UNESP. Construo a cadeia
+          inteira — coleta e auditoria de dados, machine learning aplicado e
+          interfaces que entregam a análise a quem decide.
+        </p>
+        <div class="role-line">
+          <span class="tag">Python</span>
+          <span class="tag">ML &amp; Data</span>
+          <span class="tag">Visão Computacional</span>
+          <span class="tag">5G / IoT</span>
+          <span class="tag">Full-stack</span>
+        </div>
+        <div class="cta-row">
+          <a class="btn primary" href="#projetos">
+            Ver projetos
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="btn" href="https://github.com/JoaoMonteiroUNESP" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.6 2 12.3c0 4.5 2.9 8.3 6.8 9.7.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.2-3.4-1.2-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.6 2.4 1.1 3 .8.1-.7.4-1.1.6-1.4-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.7 1a9.3 9.3 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.3 4.7-4.6 5 .4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5 3.9-1.4 6.8-5.2 6.8-9.7C22 6.6 17.5 2 12 2z"/></svg>
+            GitHub
+          </a>
+        </div>
+      </div>
+
+      <!-- instrument panel -->
+      <div class="panel" aria-hidden="true">
+        <div class="panel-head">
+          <span>RF&nbsp;·&nbsp;5G&nbsp;NSA&nbsp;walk-test</span>
+          <span class="live"><span class="pulse"></span>capturando</span>
+        </div>
+        <canvas id="signal" width="520" height="260"></canvas>
+        <div class="readout">
+          <div class="cell"><div class="k">RSRP</div><div class="v">−<span id="rsrp">87</span> dBm</div></div>
+          <div class="cell"><div class="k">SINR</div><div class="v"><span id="sinr">14</span> dB</div></div>
+          <div class="cell"><div class="k">Throughput</div><div class="v"><span id="thr">218</span> Mb/s</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STACK -->
+  <div class="stack">
+    <div class="wrap inner">
+      <span class="label">Stack</span>
+      <span class="chip">Python</span>
+      <span class="chip">pandas</span>
+      <span class="chip">scikit-learn</span>
+      <span class="chip">XGBoost</span>
+      <span class="chip">FastAPI</span>
+      <span class="chip">Streamlit</span>
+      <span class="chip">OpenCV</span>
+      <span class="chip">MediaPipe</span>
+      <span class="chip">SQL / SQLite</span>
+      <span class="chip">TypeScript</span>
+      <span class="chip">React / Next.js</span>
+      <span class="chip">Prisma</span>
+      <span class="chip">Git · CI</span>
+    </div>
+  </div>
+
+  <!-- PROJECTS -->
+  <section id="projetos">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Trabalho selecionado</p>
+        <h2>Projetos</h2>
+        <p>Cinco projetos que atravessam dados, ML, visão computacional e produto — todos com código aberto no GitHub.</p>
+      </div>
+
+      <div class="projects">
+        <!-- FEATURE -->
+        <article class="card feature">
+          <div class="card-top">
+            <span class="domain">IoT · Dados · 5G</span>
+            <span class="mono" style="font-size:.7rem;color:var(--faint)">Iniciação Científica · FEG-UNESP</span>
+          </div>
+          <div class="card-body">
+            <h3>Plataforma Científica RF — 5G NSA</h3>
+            <p class="oneline">Ingestão, auditoria, exploração espacial e modelagem de medições comerciais 5G.</p>
+            <p class="desc">
+              Pipeline reprodutível que reúne logs de <em>walk-test</em> (rádio, GPS, QoS e
+              contexto) numa cadeia auditável por SHA-256 — do parsing e da deduplicação
+              analítica até mapas de cobertura, estatística por setor, regressão
+              (Random Forest, XGBoost, SVR), classificação e clustering (PCA, k-means,
+              DBSCAN). Preserva ausências em vez de zerá-las, com validação agrupada por
+              campanha. Empacotado com FastAPI, testes e CI + Dependabot.
+            </p>
+          </div>
+          <div class="techs">
+            <span class="tech">Python</span><span class="tech">FastAPI</span>
+            <span class="tech">scikit-learn</span><span class="tech">XGBoost</span>
+            <span class="tech">SQLite</span><span class="tech">Plotly</span><span class="tech">Pandas</span>
+          </div>
+          <div class="card-links">
+            <a href="https://github.com/JoaoMonteiroUNESP/feg-unesp-5g-rf-platform" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.6 2 12.3c0 4.5 2.9 8.3 6.8 9.7.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.2-3.4-1.2-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.6 2.4 1.1 3 .8.1-.7.4-1.1.6-1.4-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.7 1a9.3 9.3 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.3 4.7-4.6 5 .4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5 3.9-1.4 6.8-5.2 6.8-9.7C22 6.6 17.5 2 12 2z"/></svg>
+              Repositório
+            </a>
+          </div>
+        </article>
+
+        <!-- CV -->
+        <article class="card">
+          <div class="card-top"><span class="domain">Visão Computacional · ML</span></div>
+          <h3>Monitor do Condutor</h3>
+          <p class="oneline">Detecção de sinais de sonolência e uso de celular.</p>
+          <p class="desc">
+            Visão computacional em simulação controlada de condução: features faciais
+            (MediaPipe), detecção de celular (YOLO), camada de decisão <em>explicável</em>
+            — cada predição mostra a regra ativada — e métricas comportamentais por
+            sessão (PERCLOS, piscadas, tempo de cabeça baixa).
+          </p>
+          <div class="techs">
+            <span class="tech">Python</span><span class="tech">OpenCV</span>
+            <span class="tech">MediaPipe</span><span class="tech">YOLO</span><span class="tech">scikit-learn</span>
+          </div>
+          <div class="card-links">
+            <a href="https://github.com/JoaoMonteiroUNESP/monitor-do-condutor" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.6 2 12.3c0 4.5 2.9 8.3 6.8 9.7.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.2-3.4-1.2-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.6 2.4 1.1 3 .8.1-.7.4-1.1.6-1.4-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.7 1a9.3 9.3 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.3 4.7-4.6 5 .4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5 3.9-1.4 6.8-5.2 6.8-9.7C22 6.6 17.5 2 12 2z"/></svg>
+              Repositório
+            </a>
+          </div>
+        </article>
+
+        <!-- BASF -->
+        <article class="card">
+          <div class="card-top"><span class="domain">Dados · BI</span></div>
+          <h3>BASF · Board Financial Review</h3>
+          <p class="oneline">Dashboard executivo sobre demonstrativos públicos 2021–2024.</p>
+          <p class="desc">
+            Painel de revisão financeira de conselho: DRE, balanço, fluxo de caixa e
+            indicadores com semáforos de status, diagnóstico automático por ano e plano
+            de ação gerado a partir dos pontos de atenção.
+          </p>
+          <div class="techs">
+            <span class="tech">Python</span><span class="tech">Streamlit</span>
+            <span class="tech">pandas</span><span class="tech">Plotly</span>
+          </div>
+          <div class="card-links">
+            <a href="https://github.com/JoaoMonteiroUNESP/dashboard-financeiro-basf" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.6 2 12.3c0 4.5 2.9 8.3 6.8 9.7.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.2-3.4-1.2-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.6 2.4 1.1 3 .8.1-.7.4-1.1.6-1.4-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.7 1a9.3 9.3 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.3 4.7-4.6 5 .4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5 3.9-1.4 6.8-5.2 6.8-9.7C22 6.6 17.5 2 12 2z"/></svg>
+              Repositório
+            </a>
+            <a class="muted" href="#contato">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6M10 14 21 3"/></svg>
+              Demo em breve
+            </a>
+          </div>
+        </article>
+
+        <!-- CasaOS -->
+        <article class="card">
+          <div class="card-top"><span class="domain">Full-stack · Web</span></div>
+          <h3>CasaOS</h3>
+          <p class="oneline">Sistema doméstico local-first para finanças e rotina da casa.</p>
+          <p class="desc">
+            App full-stack: finanças com importação de extratos (OFX / CSV / PDF), metas,
+            estoque, compras e tarefas, empacotado como PWA com testes unitários e E2E.
+            Demo pública com dados 100% sintéticos.
+          </p>
+          <div class="techs">
+            <span class="tech">Next.js</span><span class="tech">React</span>
+            <span class="tech">TypeScript</span><span class="tech">Prisma</span><span class="tech">SQLite</span>
+          </div>
+          <div class="card-links">
+            <a href="https://github.com/JoaoMonteiroUNESP/casaos-demo" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.6 2 12.3c0 4.5 2.9 8.3 6.8 9.7.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.2-3.4-1.2-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.6 2.4 1.1 3 .8.1-.7.4-1.1.6-1.4-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.7 1a9.3 9.3 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.3 4.7-4.6 5 .4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5 3.9-1.4 6.8-5.2 6.8-9.7C22 6.6 17.5 2 12 2z"/></svg>
+              Repositório
+            </a>
+          </div>
+        </article>
+
+        <!-- Labirintos -->
+        <article class="card">
+          <div class="card-top">
+            <span class="domain">Front-end · Web</span>
+            <span class="badge-live"><span class="pulse"></span>no ar</span>
+          </div>
+          <h3>Nos Labirintos do Eu</h3>
+          <p class="oneline">Landing page editorial de livro, publicada no Vercel.</p>
+          <p class="desc">
+            Site de divulgação com animações de scroll, integração de mídia e SEO,
+            construído em Next.js e implantado no Vercel com domínio de produção.
+          </p>
+          <div class="techs">
+            <span class="tech">Next.js</span><span class="tech">TypeScript</span>
+            <span class="tech">Tailwind</span><span class="tech">Framer Motion</span>
+          </div>
+          <div class="card-links">
+            <a href="https://github.com/JoaoMonteiroUNESP/nos-labirintos-do-eu" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.6 2 12.3c0 4.5 2.9 8.3 6.8 9.7.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.2-3.4-1.2-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.6 2.4 1.1 3 .8.1-.7.4-1.1.6-1.4-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.7 1a9.3 9.3 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.3 4.7-4.6 5 .4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5 3.9-1.4 6.8-5.2 6.8-9.7C22 6.6 17.5 2 12 2z"/></svg>
+              Repositório
+            </a>
+            <a href="https://nos-labirintos-do-eu.vercel.app" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6M10 14 21 3"/></svg>
+              Ver site
+            </a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="sobre">
+    <div class="wrap">
+      <div class="about-grid">
+        <div class="about">
+          <p class="eyebrow">Sobre</p>
+          <h2 style="font-size:clamp(1.6rem,3.4vw,2.3rem);margin:.5rem 0 1.4rem;">Da medição de campo à decisão</h2>
+          <p>
+            Sou <strong>João Guilherme de Castro Monteiro</strong>, estudante de
+            <strong>Engenharia de Produção na FEG-UNESP</strong> (Guaratinguetá–SP).
+            Na Iniciação Científica trabalho com <strong>medições de rede 5G</strong> —
+            coleta em campo, auditoria de dados e modelagem — e é daí que vem a forma
+            como encaro qualquer problema: dado rastreável primeiro, modelo depois.
+          </p>
+          <p>
+            Gosto de atravessar a pilha inteira: <strong>engenharia e limpeza de dados</strong>,
+            <strong>machine learning aplicado</strong> (regressão, classificação,
+            clustering, visão computacional) e os <strong>produtos web</strong> que
+            colocam a análise na mão de quem decide. Escrevo testes, versiono tudo e
+            documento para que outra pessoa consiga reproduzir.
+          </p>
+          <p>
+            Estou <strong>em busca de oportunidades</strong> em dados, engenharia,
+            machine learning e IoT.
+          </p>
+        </div>
+        <aside class="facts" aria-label="Informações rápidas">
+          <div class="fact"><div class="k">Formação</div><div class="v">Eng. de Produção · FEG-UNESP</div></div>
+          <div class="fact"><div class="k">Foco</div><div class="v">Dados · ML · IoT</div></div>
+          <div class="fact"><div class="k">Base</div><div class="v">Guaratinguetá · SP · Brasil</div></div>
+          <div class="fact"><div class="k">Projetos abertos</div><div class="v">5 no GitHub</div></div>
+          <div class="fact"><div class="k">Disponibilidade</div><div class="v">Aberto a propostas</div></div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contato" class="contact">
+    <div class="wrap">
+      <p class="eyebrow">Contato</p>
+      <h2>Vamos conversar.</h2>
+      <p>Aberto a estágios e posições em dados, ML e IoT. A melhor forma de me alcançar é por e-mail ou LinkedIn.</p>
+      <div class="cta-row">
+        <a class="btn primary" href="mailto:jg.monteiro@unesp.br">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+          jg.monteiro@unesp.br
+        </a>
+        <a class="btn" href="https://github.com/JoaoMonteiroUNESP" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.6 2 12.3c0 4.5 2.9 8.3 6.8 9.7.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.2-3.4-1.2-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.6 2.4 1.1 3 .8.1-.7.4-1.1.6-1.4-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.7 1a9.3 9.3 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.3 4.7-4.6 5 .4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5 3.9-1.4 6.8-5.2 6.8-9.7C22 6.6 17.5 2 12 2z"/></svg>
+          github.com/JoaoMonteiroUNESP
+        </a>
+        <a class="btn" href="#" data-placeholder="linkedin">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.94 5A1.94 1.94 0 1 1 3.06 5a1.94 1.94 0 0 1 3.88 0zM3.5 8.5h3v12h-3zM10 8.5h2.9v1.6h.04c.4-.76 1.38-1.6 2.85-1.6 3.05 0 3.61 2 3.61 4.6v7.4h-3v-6.6c0-1.57-.03-3.6-2.2-3.6-2.2 0-2.54 1.72-2.54 3.49v6.7H10z"/></svg>
+          LinkedIn <span class="note">a definir</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap row">
+    <span class="mono">© <span id="year">2026</span> João Monteiro · construído com HTML, CSS &amp; ☕</span>
+    <div class="social">
+      <a href="https://github.com/JoaoMonteiroUNESP" target="_blank" rel="noopener">GitHub</a>
+      <a href="mailto:jg.monteiro@unesp.br">E-mail</a>
+      <a href="#" data-placeholder="linkedin">LinkedIn</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // year
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // theme toggle
+  (function () {
+    var root = document.documentElement;
+    var btn = document.getElementById('themeToggle');
+    btn.addEventListener('click', function () {
+      var cur = root.getAttribute('data-theme');
+      var systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var isDark = cur ? cur === 'dark' : systemDark;
+      root.setAttribute('data-theme', isDark ? 'light' : 'dark');
+    });
+  })();
+
+  // signal panel — faint RF telemetry visualization
+  (function () {
+    var canvas = document.getElementById('signal');
+    if (!canvas) return;
+    var ctx = canvas.getContext('2d');
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var W, H, dpr;
+
+    function css(v) { return getComputedStyle(document.documentElement).getPropertyValue(v).trim(); }
+
+    function resize() {
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      W = canvas.clientWidth; H = canvas.clientHeight;
+      canvas.width = W * dpr; canvas.height = H * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    // scatter points (coverage samples)
+    var pts = [];
+    for (var i = 0; i < 46; i++) {
+      pts.push({ x: Math.random(), y: Math.random(), r: 1.2 + Math.random() * 2.4, a: 0.25 + Math.random() * 0.5 });
+    }
+
+    var t = 0;
+    function frame() {
+      var line = css('--plot') || '#0f6d6b';
+      var warm = css('--plot-2') || '#b5701f';
+      var grid = css('--grid-line') || 'rgba(0,0,0,.08)';
+      ctx.clearRect(0, 0, W, H);
+
+      // grid
+      ctx.strokeStyle = grid; ctx.lineWidth = 1;
+      for (var gx = 0; gx <= W; gx += W / 8) { ctx.beginPath(); ctx.moveTo(gx, 0); ctx.lineTo(gx, H); ctx.stroke(); }
+      for (var gy = 0; gy <= H; gy += H / 5) { ctx.beginPath(); ctx.moveTo(0, gy); ctx.lineTo(W, gy); ctx.stroke(); }
+
+      // scatter
+      for (var i = 0; i < pts.length; i++) {
+        var p = pts[i];
+        var warmPt = (i % 6 === 0);
+        ctx.beginPath();
+        ctx.globalAlpha = warmPt ? 0.7 : p.a;
+        ctx.fillStyle = warmPt ? warm : line;
+        ctx.arc(p.x * W, p.y * H, p.r, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      ctx.globalAlpha = 1;
+
+      // waveform
+      ctx.beginPath();
+      for (var x = 0; x <= W; x += 3) {
+        var nx = x / W;
+        var y = H / 2
+          + Math.sin(nx * 9 + t) * (H * 0.16)
+          + Math.sin(nx * 21 + t * 1.7) * (H * 0.06)
+          + Math.sin(nx * 3 - t * 0.6) * (H * 0.09);
+        if (x === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+      }
+      ctx.strokeStyle = line; ctx.lineWidth = 2; ctx.lineJoin = 'round';
+      ctx.stroke();
+
+      // leading dot
+      var lx = W, ly = H / 2 + Math.sin(9 + t) * (H * 0.16) + Math.sin(21 + t * 1.7) * (H * 0.06) + Math.sin(3 - t * 0.6) * (H * 0.09);
+      ctx.beginPath(); ctx.fillStyle = line; ctx.arc(lx - 2, ly, 3, 0, Math.PI * 2); ctx.fill();
+
+      if (!reduced) { t += 0.02; requestAnimationFrame(frame); }
+    }
+    frame();
+
+    // animate readouts subtly
+    if (!reduced) {
+      setInterval(function () {
+        var jitter = function (base, spread) { return Math.round(base + (Math.random() - 0.5) * spread); };
+        var r = document.getElementById('rsrp'); if (r) r.textContent = jitter(87, 6);
+        var s = document.getElementById('sinr'); if (s) s.textContent = jitter(14, 4);
+        var th = document.getElementById('thr'); if (th) th.textContent = jitter(218, 40);
+      }, 1600);
+    }
+  })();
+</script>
+</body>
+</html>
