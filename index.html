@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Portfólio de João Monteiro — engenharia de dados, machine learning, visão computacional e IoT. Projetos com código aberto e demos.">
 <meta property="og:title" content="João Monteiro — Portfólio">
-<meta property="og:description" content="Dados · Engenharia · Machine Learning · IoT">
+<meta property="og:description" content="Engenharia · Dados · Analytics · Decisão">
 <meta property="og:type" content="website">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2288%22>📡</text></svg>">
 <title>João Monteiro</title>
@@ -155,7 +155,7 @@
   }
 
   /* ============ HERO ============ */
-  .hero { padding: clamp(3rem, 8vw, 6rem) 0 clamp(2.5rem, 5vw, 4rem); }
+  .hero { padding: clamp(2.2rem, 5vw, 3.6rem) 0 clamp(1.6rem, 3.5vw, 2.6rem); }
   .hero-grid {
     display: grid; grid-template-columns: 1.15fr .85fr; gap: clamp(1.5rem, 4vw, 3.5rem);
     align-items: center;
@@ -231,8 +231,9 @@
   }
 
   /* ============ SECTIONS ============ */
-  section { padding: clamp(3rem, 7vw, 5.5rem) 0; }
-  .sec-head { margin-bottom: 2.2rem; }
+  section { padding: clamp(1.9rem, 4vw, 3rem) 0; }
+  #sobre { border-top: 1px solid var(--line-soft); }
+  .sec-head { margin-bottom: 1.5rem; }
   .sec-head h2 { font-size: clamp(1.6rem, 3.4vw, 2.3rem); margin-top: .5rem; }
   .sec-head p { color: var(--muted); margin: .7rem 0 0; max-width: 60ch; }
 
@@ -281,11 +282,55 @@
   .card-links a.muted { color: var(--faint); }
 
   /* ============ ABOUT ============ */
-  .about-grid { display: grid; grid-template-columns: 1.3fr .7fr; gap: clamp(1.5rem, 4vw, 3rem); align-items: start; }
+  .about-grid { display: grid; grid-template-columns: 1.32fr .68fr; gap: clamp(1.5rem, 4vw, 3rem); align-items: start; }
   @media (max-width: 760px) { .about-grid { grid-template-columns: 1fr; } }
-  .about p { color: var(--muted); font-size: 1.02rem; }
-  .about p + p { margin-top: 1rem; }
+  .about p { color: var(--muted); font-size: 1rem; line-height: 1.72; max-width: 66ch; }
+  .about p + p { margin-top: .9rem; }
   .about strong { color: var(--ink); font-weight: 600; }
+  @media (min-width: 761px) {
+    .about p.justify { text-align: justify; text-justify: inter-word; -webkit-hyphens: auto; hyphens: auto; }
+  }
+  /* método — sequência real do modo de trabalho */
+  .method { list-style: none; margin: 1.1rem 0 0; padding: 0; display: flex; flex-direction: column; gap: .6rem; counter-reset: m; }
+  .method li { position: relative; padding-left: 2.4rem; color: var(--muted); font-size: .96rem; line-height: 1.55; }
+  .method li::before {
+    counter-increment: m; content: counter(m, decimal-leading-zero);
+    position: absolute; left: 0; top: .12rem;
+    font-family: "IBM Plex Mono", monospace; font-size: .68rem; font-weight: 500;
+    color: var(--accent-ink); background: var(--accent-soft);
+    border: 1px solid var(--accent-soft); border-radius: 5px; padding: .08rem .32rem;
+  }
+  .method li strong { color: var(--ink); font-weight: 600; }
+  /* retrato editorial (seção Sobre) */
+  .portrait {
+    position: relative; margin: 0 0 1rem; border: 1px solid var(--line);
+    border-radius: 12px; overflow: hidden; background: var(--surface-2); box-shadow: var(--shadow);
+    aspect-ratio: 4 / 5;
+  }
+  .portrait img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 22%; filter: grayscale(1) contrast(1.03); }
+  .portrait::after { content: ""; position: absolute; inset: 0; background: var(--accent); opacity: .12; mix-blend-mode: soft-light; pointer-events: none; }
+  .portrait .pcap {
+    position: absolute; left: .7rem; bottom: .6rem; z-index: 2;
+    font-family: "IBM Plex Mono", monospace; font-size: .6rem; letter-spacing: .12em;
+    text-transform: uppercase; color: #fff; opacity: .85;
+    text-shadow: 0 1px 4px rgba(0,0,0,.5);
+  }
+  .portrait.placeholder { display: grid; place-items: center; }
+  .portrait.placeholder .mono-mono {
+    font-family: "Bricolage Grotesque", sans-serif; font-weight: 800;
+    font-size: clamp(2.6rem, 7vw, 3.6rem); color: var(--faint); letter-spacing: -.02em;
+  }
+  .portrait.placeholder::before {
+    content: "retrato"; position: absolute; bottom: .6rem; left: .7rem;
+    font-family: "IBM Plex Mono", monospace; font-size: .6rem; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--faint);
+  }
+  .about-side { display: flex; flex-direction: column; }
+  @media (max-width: 760px) {
+    .about-side { align-items: center; }
+    .portrait { width: 100%; max-width: 240px; }
+    .about-side .facts { width: 100%; max-width: 420px; }
+  }
   .facts { display: flex; flex-direction: column; gap: 0; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: var(--surface); }
   .facts .fact { padding: .95rem 1.1rem; border-bottom: 1px solid var(--line-soft); }
   .facts .fact:last-child { border-bottom: 0; }
@@ -337,18 +382,21 @@
   <div class="hero">
     <div class="wrap hero-grid">
       <div>
-        <p class="eyebrow">Dados · Engenharia · Machine Learning · IoT</p>
-        <h1>Do sinal bruto ao<br><span class="accent">modelo em produção.</span></h1>
+        <p class="eyebrow">Engenharia · Dados · Analytics · Decisão</p>
+        <h1>Do dado bruto à<br><span class="accent">decisão confiável.</span></h1>
         <p class="lede">
-          Engenheiro de Produção em formação na FEG-UNESP. Construo a cadeia
-          inteira — coleta e auditoria de dados, machine learning aplicado e
-          interfaces que entregam a análise a quem decide.
+          Engenheiro de Produção em formação na FEG-UNESP. Estruturo dados,
+          processos e modelos com rastreabilidade — da coleta e da validação
+          à análise, à automação e ao apoio à decisão.
         </p>
         <div class="role-line">
           <span class="tag">Python</span>
-          <span class="tag">ML &amp; Data</span>
-          <span class="tag">Visão Computacional</span>
-          <span class="tag">5G / IoT</span>
+          <span class="tag">Data &amp; Analytics</span>
+          <span class="tag">Machine Learning</span>
+          <span class="tag">Data Quality</span>
+          <span class="tag">Automação</span>
+          <span class="tag">Dev com IA</span>
+          <span class="tag">IoT / 5G</span>
           <span class="tag">Full-stack</span>
         </div>
         <div class="cta-row">
@@ -367,7 +415,7 @@
       <div class="panel" aria-hidden="true">
         <div class="panel-head">
           <span>RF&nbsp;·&nbsp;5G&nbsp;NSA&nbsp;walk-test</span>
-          <span class="live"><span class="pulse"></span>capturando</span>
+          <span class="live"><span class="pulse"></span>ilustrativo</span>
         </div>
         <canvas id="signal" width="520" height="260"></canvas>
         <div class="readout">
@@ -382,7 +430,7 @@
   <!-- STACK -->
   <div class="stack">
     <div class="wrap inner">
-      <span class="label">Stack</span>
+      <span class="label">Ferramentas</span>
       <span class="chip">Python</span>
       <span class="chip">pandas</span>
       <span class="chip">scikit-learn</span>
@@ -405,7 +453,7 @@
       <div class="sec-head">
         <p class="eyebrow">Trabalho selecionado</p>
         <h2>Projetos</h2>
-        <p>Cinco projetos que atravessam dados, ML, visão computacional e produto — todos com código aberto no GitHub.</p>
+        <p>Cinco projetos com o mesmo método por trás: entender o problema, garantir a qualidade e a origem do dado, e transformar a análise em algo que sustente uma decisão. Todos com código aberto no GitHub.</p>
       </div>
 
       <div class="projects">
@@ -417,14 +465,17 @@
           </div>
           <div class="card-body">
             <h3>Plataforma Científica RF — 5G NSA</h3>
-            <p class="oneline">Ingestão, auditoria, exploração espacial e modelagem de medições comerciais 5G.</p>
+            <p class="oneline">Do walk-test em campo à análise reprodutível de cobertura e desempenho 5G.</p>
             <p class="desc">
-              Pipeline reprodutível que reúne logs de <em>walk-test</em> (rádio, GPS, QoS e
-              contexto) numa cadeia auditável por SHA-256 — do parsing e da deduplicação
-              analítica até mapas de cobertura, estatística por setor, regressão
-              (Random Forest, XGBoost, SVR), classificação e clustering (PCA, k-means,
-              DBSCAN). Preserva ausências em vez de zerá-las, com validação agrupada por
-              campanha. Empacotado com FastAPI, testes e CI + Dependabot.
+              Logs de <em>walk-test</em> misturam rádio, GPS e QoS, com cadências
+              diferentes e campos ausentes. A plataforma transforma essa coleta de campo
+              numa cadeia auditável: cada arquivo entra com <strong>hash SHA-256</strong>,
+              campanha e execução, separando linhas brutas de estados analíticos e
+              <strong>preservando as ausências em vez de zerá-las</strong>. Sobre essa base
+              vêm os mapas de cobertura, a estatística por setor e os modelos — regressão,
+              classificação e agrupamento — sempre com <strong>validação agrupada por
+              campanha</strong> para não superestimar o desempenho. Entregue como aplicação
+              FastAPI, com testes e CI, pensada para ser reproduzida por outra pessoa.
             </p>
           </div>
           <div class="techs">
@@ -444,12 +495,14 @@
         <article class="card">
           <div class="card-top"><span class="domain">Visão Computacional · ML</span></div>
           <h3>Monitor do Condutor</h3>
-          <p class="oneline">Detecção de sinais de sonolência e uso de celular.</p>
+          <p class="oneline">Sinais de sonolência e uso de celular, com decisão interpretável.</p>
           <p class="desc">
-            Visão computacional em simulação controlada de condução: features faciais
-            (MediaPipe), detecção de celular (YOLO), camada de decisão <em>explicável</em>
-            — cada predição mostra a regra ativada — e métricas comportamentais por
-            sessão (PERCLOS, piscadas, tempo de cabeça baixa).
+            Visão computacional aplicada ao comportamento em simulação controlada de
+            condução. Em vez de entregar só um rótulo, cada predição expõe a
+            <strong>regra e a evidência</strong> que a sustentam — olhos fechados, PERCLOS,
+            bocejo, celular visível — e há uma <strong>camada de abstenção</strong> quando a
+            confiança é baixa, para não transformar uma probabilidade em decisão
+            arbitrária. Acompanha métricas comportamentais por sessão.
           </p>
           <div class="techs">
             <span class="tech">Python</span><span class="tech">OpenCV</span>
@@ -465,13 +518,15 @@
 
         <!-- BASF -->
         <article class="card">
-          <div class="card-top"><span class="domain">Dados · BI</span></div>
+          <div class="card-top"><span class="domain">Dados · Negócio</span></div>
           <h3>BASF · Board Financial Review</h3>
-          <p class="oneline">Dashboard executivo sobre demonstrativos públicos 2021–2024.</p>
+          <p class="oneline">Demonstrativos públicos viram diagnóstico e apoio à decisão de conselho.</p>
           <p class="desc">
-            Painel de revisão financeira de conselho: DRE, balanço, fluxo de caixa e
-            indicadores com semáforos de status, diagnóstico automático por ano e plano
-            de ação gerado a partir dos pontos de atenção.
+            A partir de <strong>demonstrativos financeiros públicos</strong> (2021–2024),
+            organiza DRE, balanço e fluxo de caixa em indicadores comparáveis e traduz o
+            resultado em linguagem executiva: semáforos de status, diagnóstico por ano e
+            <strong>pontos de atenção</strong> que orientam a decisão. Usa apenas
+            informação pública — o foco é a leitura de negócio.
           </p>
           <div class="techs">
             <span class="tech">Python</span><span class="tech">Streamlit</span>
@@ -493,11 +548,13 @@
         <article class="card">
           <div class="card-top"><span class="domain">Full-stack · Web</span></div>
           <h3>CasaOS</h3>
-          <p class="oneline">Sistema doméstico local-first para finanças e rotina da casa.</p>
+          <p class="oneline">Aplicação doméstica local-first: dados privados, na sua máquina.</p>
           <p class="desc">
-            App full-stack: finanças com importação de extratos (OFX / CSV / PDF), metas,
-            estoque, compras e tarefas, empacotado como PWA com testes unitários e E2E.
-            Demo pública com dados 100% sintéticos.
+            Full-stack com <strong>arquitetura local-first</strong> — os dados ficam na
+            máquina do usuário, sem serviços externos. Reúne finanças (importação de
+            OFX / CSV / PDF), estoque, compras e tarefas, com modelagem em Prisma,
+            automações e testes unitários e E2E. A <strong>demo pública roda com dados
+            sintéticos</strong>; a instância real não é versionada.
           </p>
           <div class="techs">
             <span class="tech">Next.js</span><span class="tech">React</span>
@@ -518,10 +575,11 @@
             <span class="badge-live"><span class="pulse"></span>no ar</span>
           </div>
           <h3>Nos Labirintos do Eu</h3>
-          <p class="oneline">Landing page editorial de livro, publicada no Vercel.</p>
+          <p class="oneline">Produto de front-end entregue de ponta a ponta, em produção.</p>
           <p class="desc">
-            Site de divulgação com animações de scroll, integração de mídia e SEO,
-            construído em Next.js e implantado no Vercel com domínio de produção.
+            Landing page editorial de livro entregue do design ao deploy: animações de
+            scroll, integração de mídia, SEO e atenção a UX. Construída em Next.js e
+            <strong>publicada em produção no Vercel</strong>.
           </p>
           <div class="techs">
             <span class="tech">Next.js</span><span class="tech">TypeScript</span>
@@ -549,32 +607,53 @@
         <div class="about">
           <p class="eyebrow">Sobre</p>
           <h2 style="font-size:clamp(1.6rem,3.4vw,2.3rem);margin:.5rem 0 1.4rem;">Da medição de campo à decisão</h2>
-          <p>
+          <p class="justify">
             Sou <strong>João Guilherme de Castro Monteiro</strong>, estudante de
-            <strong>Engenharia de Produção na FEG-UNESP</strong> (Guaratinguetá–SP).
-            Na Iniciação Científica trabalho com <strong>medições de rede 5G</strong> —
-            coleta em campo, auditoria de dados e modelagem — e é daí que vem a forma
-            como encaro qualquer problema: dado rastreável primeiro, modelo depois.
+            <strong>Engenharia de Produção na FEG-UNESP</strong>. Essa formação molda a
+            forma como trabalho: antes de escolher a ferramenta, penso no processo —
+            qualidade, origem do dado, indicadores, risco e a decisão que a análise
+            precisa sustentar. Na Iniciação Científica, com <strong>medições de rede
+            5G</strong>, isso virou um princípio: <strong>dado rastreável primeiro,
+            modelo depois</strong>.
           </p>
-          <p>
-            Gosto de atravessar a pilha inteira: <strong>engenharia e limpeza de dados</strong>,
-            <strong>machine learning aplicado</strong> (regressão, classificação,
-            clustering, visão computacional) e os <strong>produtos web</strong> que
-            colocam a análise na mão de quem decide. Escrevo testes, versiono tudo e
-            documento para que outra pessoa consiga reproduzir.
+          <p class="justify">
+            Atuo na interface entre o lado técnico e o de negócio. Gosto de atravessar a
+            cadeia inteira — engenharia de dados, análise e modelos — mas o que me
+            interessa não é apenas fazer um modelo funcionar, e sim entregar informação
+            <strong>confiável, auditável e útil</strong> para quem decide.
           </p>
-          <p>
-            Estou <strong>em busca de oportunidades</strong> em dados, engenharia,
-            machine learning e IoT.
+
+          <p class="eyebrow" style="margin-top:1.6rem;">Como eu trabalho</p>
+          <ol class="method">
+            <li><strong>Entendo o processo e a origem dos dados</strong> antes de escrever qualquer código.</li>
+            <li><strong>Estruturo coleta, limpeza, validação e rastreabilidade</strong> — o dado precisa ser confiável na base.</li>
+            <li><strong>Aplico estatística, analytics ou ML quando o problema pede</strong>, não por default.</li>
+            <li><strong>Transformo o resultado</strong> em automação, dashboard, API ou produto.</li>
+            <li><strong>Documento e valido</strong> para que outra pessoa consiga entender e reproduzir.</li>
+            <li><strong>Uso IA para acelerar</strong> pesquisa, código, documentação e testes — com revisão e responsabilidade humana sobre o que entra em produção.</li>
+          </ol>
+
+          <p class="justify" style="margin-top:1.4rem;">
+            Uso IA intensivamente no dia a dia, mas como <strong>ferramenta de
+            engenharia — não como substituta do julgamento</strong>. Prefiro fixar os
+            fundamentos primeiro e usar IA para ganhar velocidade, validando os
+            resultados, cuidando de privacidade e confidencialidade, e mantendo controle
+            sobre o resultado final.
           </p>
         </div>
-        <aside class="facts" aria-label="Informações rápidas">
-          <div class="fact"><div class="k">Formação</div><div class="v">Eng. de Produção · FEG-UNESP</div></div>
-          <div class="fact"><div class="k">Foco</div><div class="v">Dados · ML · IoT</div></div>
-          <div class="fact"><div class="k">Base</div><div class="v">Guaratinguetá · SP · Brasil</div></div>
-          <div class="fact"><div class="k">Projetos abertos</div><div class="v">5 no GitHub</div></div>
-          <div class="fact"><div class="k">Disponibilidade</div><div class="v">Aberto a propostas</div></div>
-        </aside>
+
+        <div class="about-side">
+          <figure class="portrait placeholder" id="portrait" aria-label="Retrato de João Monteiro">
+            <span class="mono-mono" aria-hidden="true">JM</span>
+          </figure>
+          <aside class="facts" aria-label="Informações rápidas">
+            <div class="fact"><div class="k">Formação</div><div class="v">Eng. de Produção · FEG-UNESP</div></div>
+            <div class="fact"><div class="k">Atuação</div><div class="v">Dados · Analytics · ML · IoT</div></div>
+            <div class="fact"><div class="k">Abordagem</div><div class="v">Rastreabilidade e reprodutibilidade</div></div>
+            <div class="fact"><div class="k">Base</div><div class="v">Guaratinguetá · SP · Brasil</div></div>
+            <div class="fact"><div class="k">Situação</div><div class="v">Aberto a oportunidades</div></div>
+          </aside>
+        </div>
       </div>
     </div>
   </section>
@@ -584,7 +663,7 @@
     <div class="wrap">
       <p class="eyebrow">Contato</p>
       <h2>Vamos conversar.</h2>
-      <p>Aberto a estágios e posições em dados, ML e IoT. A melhor forma de me alcançar é por e-mail ou LinkedIn.</p>
+      <p>Aberto a estágios e posições em dados, engenharia, machine learning e IoT. O melhor caminho é por e-mail ou LinkedIn.</p>
       <div class="cta-row">
         <a class="btn primary" href="mailto:jg.monteiro@unesp.br">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
@@ -594,9 +673,9 @@
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.6 2 12.3c0 4.5 2.9 8.3 6.8 9.7.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.2-3.4-1.2-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.6 2.4 1.1 3 .8.1-.7.4-1.1.6-1.4-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.7 1a9.3 9.3 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.3 4.7-4.6 5 .4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5 3.9-1.4 6.8-5.2 6.8-9.7C22 6.6 17.5 2 12 2z"/></svg>
           github.com/JoaoMonteiroUNESP
         </a>
-        <a class="btn" href="#" data-placeholder="linkedin">
+        <a class="btn" href="https://www.linkedin.com/in/jo%C3%A3o-guilherme-de-castro-monteiro-404690356" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.94 5A1.94 1.94 0 1 1 3.06 5a1.94 1.94 0 0 1 3.88 0zM3.5 8.5h3v12h-3zM10 8.5h2.9v1.6h.04c.4-.76 1.38-1.6 2.85-1.6 3.05 0 3.61 2 3.61 4.6v7.4h-3v-6.6c0-1.57-.03-3.6-2.2-3.6-2.2 0-2.54 1.72-2.54 3.49v6.7H10z"/></svg>
-          LinkedIn <span class="note">a definir</span>
+          LinkedIn
         </a>
       </div>
     </div>
@@ -609,7 +688,7 @@
     <div class="social">
       <a href="https://github.com/JoaoMonteiroUNESP" target="_blank" rel="noopener">GitHub</a>
       <a href="mailto:jg.monteiro@unesp.br">E-mail</a>
-      <a href="#" data-placeholder="linkedin">LinkedIn</a>
+      <a href="https://www.linkedin.com/in/jo%C3%A3o-guilherme-de-castro-monteiro-404690356" target="_blank" rel="noopener">LinkedIn</a>
     </div>
   </div>
 </footer>
