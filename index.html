@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Portfólio de João Monteiro — engenharia de dados, machine learning, visão computacional e IoT. Busca estágio, preferência remoto. Projetos com código aberto e demos.">
+<meta name="description" content="Portfólio de João Monteiro — engenharia de dados, machine learning, visão computacional e IoT. Busca estágio, preferência remoto.">
 <meta property="og:title" content="João Monteiro — Portfólio">
 <meta property="og:description" content="Engenharia · Dados · Analytics · Decisão">
 <meta property="og:type" content="website">
@@ -271,14 +271,19 @@
     font-family: "IBM Plex Mono", monospace; font-size: .72rem;
     color: var(--muted); padding: .22rem .5rem; border: 1px solid var(--line-soft); border-radius: 5px;
   }
-  .card-links { margin-top: auto; display: flex; gap: 1.1rem; padding-top: .4rem; border-top: 1px solid var(--line-soft); }
+  .card-links { margin-top: auto; display: flex; flex-wrap: wrap; gap: .6rem; padding-top: 1rem; border-top: 1px solid var(--line-soft); }
   .card-links a {
-    display: inline-flex; align-items: center; gap: .4rem; font-size: .86rem; font-weight: 500;
-    color: var(--ink); padding-top: .9rem; transition: color .15s;
+    display: inline-flex; align-items: center; gap: .45rem; font-size: .84rem; font-weight: 500;
+    color: var(--ink); padding: .5rem .9rem; border: 1px solid var(--line); border-radius: 8px;
+    background: var(--surface-2); transition: background .15s, border-color .15s, color .15s, transform .12s;
   }
-  .card-links a:hover { color: var(--accent); }
+  /* torna o card inteiro clicável (link primário = 1º = repositório) */
+  .card-links a:first-child::after { content: ""; position: absolute; inset: 0; z-index: 1; border-radius: 14px; }
+  /* links secundários (demo/site) ficam acima da área do card */
+  .card-links a:not(:first-child) { position: relative; z-index: 2; }
+  .card-links a:hover { color: var(--accent); border-color: var(--accent); background: var(--accent-soft); transform: translateY(-1px); }
   .card-links a svg { width: 15px; height: 15px; }
-  .card-links a.muted { color: var(--faint); }
+  .card:hover .card-links a:first-child { border-color: var(--accent); color: var(--accent); }
 
   /* ============ ABOUT ============ */
   .about-grid { display: grid; grid-template-columns: 1.32fr .68fr; gap: clamp(1.5rem, 4vw, 3rem); align-items: start; }
@@ -572,7 +577,7 @@
           <div class="card-links">
             <a href="https://github.com/JoaoMonteiroUNESP/feg-unesp-5g-rf-platform" target="_blank" rel="noopener">
               <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.6 2 12.3c0 4.5 2.9 8.3 6.8 9.7.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.2-3.4-1.2-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.6 2.4 1.1 3 .8.1-.7.4-1.1.6-1.4-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.7 1a9.3 9.3 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.3 4.7-4.6 5 .4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5 3.9-1.4 6.8-5.2 6.8-9.7C22 6.6 17.5 2 12 2z"/></svg>
-              Repositório
+              Ver repositório
             </a>
           </div>
         </article>
@@ -597,7 +602,7 @@
           <div class="card-links">
             <a href="https://github.com/JoaoMonteiroUNESP/monitor-do-condutor" target="_blank" rel="noopener">
               <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.6 2 12.3c0 4.5 2.9 8.3 6.8 9.7.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.2-3.4-1.2-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.6 2.4 1.1 3 .8.1-.7.4-1.1.6-1.4-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.7 1a9.3 9.3 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.3 4.7-4.6 5 .4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5 3.9-1.4 6.8-5.2 6.8-9.7C22 6.6 17.5 2 12 2z"/></svg>
-              Repositório
+              Ver repositório
             </a>
           </div>
         </article>
@@ -624,7 +629,7 @@
           <div class="card-links">
             <a href="https://github.com/JoaoMonteiroUNESP/dashboard-financeiro-executivo" target="_blank" rel="noopener">
               <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.6 2 12.3c0 4.5 2.9 8.3 6.8 9.7.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.2-3.4-1.2-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.6 2.4 1.1 3 .8.1-.7.4-1.1.6-1.4-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.7 1a9.3 9.3 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.3 4.7-4.6 5 .4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5 3.9-1.4 6.8-5.2 6.8-9.7C22 6.6 17.5 2 12 2z"/></svg>
-              Repositório
+              Ver repositório
             </a>
             <a href="https://dashboard-financeiro-executivo-zyrtnfhmdlfwdyxwlx8y2s.streamlit.app/" target="_blank" rel="noopener">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6M10 14 21 3"/></svg>
@@ -652,7 +657,7 @@
           <div class="card-links">
             <a href="https://github.com/JoaoMonteiroUNESP/casaos-demo" target="_blank" rel="noopener">
               <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.6 2 12.3c0 4.5 2.9 8.3 6.8 9.7.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.2-3.4-1.2-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.6 2.4 1.1 3 .8.1-.7.4-1.1.6-1.4-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.7 1a9.3 9.3 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.3 4.7-4.6 5 .4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5 3.9-1.4 6.8-5.2 6.8-9.7C22 6.6 17.5 2 12 2z"/></svg>
-              Repositório
+              Ver repositório
             </a>
           </div>
         </article>
@@ -677,7 +682,7 @@
           <div class="card-links">
             <a href="https://github.com/JoaoMonteiroUNESP/nos-labirintos-do-eu" target="_blank" rel="noopener">
               <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.6 2 12.3c0 4.5 2.9 8.3 6.8 9.7.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.2-3.4-1.2-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.6 2.4 1.1 3 .8.1-.7.4-1.1.6-1.4-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.7 1a9.3 9.3 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.3 4.7-4.6 5 .4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5 3.9-1.4 6.8-5.2 6.8-9.7C22 6.6 17.5 2 12 2z"/></svg>
-              Repositório
+              Ver repositório
             </a>
             <a href="https://nos-labirintos-do-eu.vercel.app" target="_blank" rel="noopener">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6M10 14 21 3"/></svg>
