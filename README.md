@@ -3,7 +3,7 @@
 
 # Portfolio — João Monteiro
 
-Personal portfolio site for roles in **data, engineering, machine learning and IoT**.
+Personal portfolio site for roles in **Data, Analytics, Automation and Production Engineering**.
 Single static page with no build step — just `index.html` (HTML + CSS + a pure-JavaScript
 telemetry canvas), with a **PT/EN language toggle**, light/dark themes and IBM Plex typography.
 
@@ -11,7 +11,7 @@ telemetry canvas), with a **PT/EN language toggle**, light/dark themes and IBM P
 
 🔗 **Featured projects:** [RF 5G Platform](https://github.com/JoaoMonteiroUNESP/feg-unesp-5g-rf-platform) ·
 [Driver Monitor](https://github.com/JoaoMonteiroUNESP/monitor-do-condutor) ·
-[Financial Dashboard](https://github.com/JoaoMonteiroUNESP/dashboard-financeiro-executivo) ·
+[Financial Analysis](https://github.com/JoaoMonteiroUNESP/financial-analysis-dashboard) ·
 [CasaOS](https://github.com/JoaoMonteiroUNESP/casaos-demo) ·
 [Nos Labirintos do Eu](https://nos-labirintos-do-eu.vercel.app)
 
@@ -35,7 +35,7 @@ blank, and click **Deploy**.
 
 # 🇧🇷 Português
 
-Site pessoal de portfólio para vagas em **dados, engenharia, machine learning e IoT**.
+Site pessoal de portfólio para vagas em **Dados, Analytics, Automação e Engenharia de Produção**.
 Página única, estática e sem dependências de build — apenas `index.html`
 (HTML + CSS + um canvas de telemetria em JavaScript puro), com **alternância de idioma
 PT/EN**, tema claro/escuro e tipografia IBM Plex.
@@ -44,7 +44,7 @@ PT/EN**, tema claro/escuro e tipografia IBM Plex.
 
 🔗 **Projetos em destaque:** [Plataforma RF 5G](https://github.com/JoaoMonteiroUNESP/feg-unesp-5g-rf-platform) ·
 [Monitor do Condutor](https://github.com/JoaoMonteiroUNESP/monitor-do-condutor) ·
-[Dashboard Financeiro](https://github.com/JoaoMonteiroUNESP/dashboard-financeiro-executivo) ·
+[Análise Financeira](https://github.com/JoaoMonteiroUNESP/financial-analysis-dashboard) ·
 [CasaOS](https://github.com/JoaoMonteiroUNESP/casaos-demo) ·
 [Nos Labirintos do Eu](https://nos-labirintos-do-eu.vercel.app)
 
