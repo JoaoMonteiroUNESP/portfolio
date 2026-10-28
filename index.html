@@ -7,6 +7,11 @@
 <meta property="og:title" content="João Monteiro — AI Builder · Software · Automation">
 <meta property="og:description" content="AI Builder · Software · Automação · Dados · Engenharia de Produção">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://joaomonteirounesp.github.io/portfolio/">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoaoMonteiroUNESP/casaos-demo/main/docs/screenshots/01-dashboard.png">
+<meta property="og:image:alt" content="Prévia do CasaOS, uma das aplicações desenvolvidas por João Monteiro">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://joaomonteirounesp.github.io/portfolio/">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2288%22>📡</text></svg>">
 <title>João Monteiro</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -185,41 +190,35 @@
   .btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
   .btn.primary:hover { background: var(--accent-ink); border-color: var(--accent-ink); }
 
-  /* instrument panel */
-  .panel {
-    position: relative; border: 1px solid var(--line); border-radius: 14px;
-    background: var(--plot-ground); box-shadow: var(--shadow); overflow: hidden;
-  }
-  .panel .panel-head {
-    display: flex; align-items: center; justify-content: space-between;
-    padding: .6rem .85rem; border-bottom: 1px solid var(--line-soft);
-    font-family: "IBM Plex Mono", monospace; font-size: .7rem; letter-spacing: .1em;
-    text-transform: uppercase; color: var(--faint);
-  }
-  .panel .panel-head .live {
-    display: inline-flex; align-items: center; gap: .4rem; color: var(--live);
-  }
-  .panel .panel-head .live .pulse {
-    width: 7px; height: 7px; border-radius: 50%; background: var(--live);
-    box-shadow: 0 0 0 0 color-mix(in srgb, var(--live) 60%, transparent);
-    animation: pulse 2.4s infinite;
-  }
-  @keyframes pulse {
-    0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--live) 55%, transparent); }
-    70% { box-shadow: 0 0 0 7px transparent; }
-    100% { box-shadow: 0 0 0 0 transparent; }
-  }
-  @media (prefers-reduced-motion: reduce) { .panel .panel-head .live .pulse { animation: none; } }
-  #signal { display: block; width: 100%; height: 260px; }
-  .panel .readout {
-    display: grid; grid-template-columns: repeat(3, 1fr);
-    border-top: 1px solid var(--line-soft);
-  }
-  .panel .readout .cell { padding: .7rem .85rem; border-right: 1px solid var(--line-soft); }
-  .panel .readout .cell:last-child { border-right: 0; }
-  .panel .readout .k { font-family: "IBM Plex Mono", monospace; font-size: .64rem; letter-spacing: .12em; text-transform: uppercase; color: var(--faint); }
-  .panel .readout .v { font-family: "IBM Plex Mono", monospace; font-size: 1.05rem; font-weight: 600; color: var(--ink); margin-top: .15rem; font-variant-numeric: tabular-nums; }
-  .panel .readout .v span { color: var(--accent); }
+  /* Impact case study: a real business result rather than decorative telemetry */
+  .impact-panel{border:1px solid var(--line);border-radius:14px;background:var(--surface);
+    box-shadow:var(--shadow);overflow:hidden;padding:clamp(1.2rem,2.7vw,1.8rem);min-width:0}
+  .impact-kicker{font-family:"IBM Plex Mono",monospace;font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;
+    color:var(--muted);display:flex;gap:.6rem;justify-content:space-between;align-items:center;flex-wrap:wrap}
+  .impact-year{border:1px solid var(--line);border-radius:4px;padding:.18rem .4rem;color:var(--faint)}
+  .impact-caption{color:var(--muted);margin:1.45rem 0 .25rem;font-size:.91rem}
+  .impact-number{font-family:"IBM Plex Mono",monospace;font-weight:700;font-size:clamp(3rem,6vw,4.7rem);
+    color:var(--accent-ink);line-height:1.1;letter-spacing:-.055em;font-variant-numeric:tabular-nums}
+  .impact-number span{font-size:.53em;letter-spacing:0;padding-left:.16rem}
+  .impact-bars{margin:1.2rem 0 1.3rem;display:grid;gap:.85rem}
+  .impact-bar-label{display:flex;justify-content:space-between;gap:.7rem;font-size:.82rem;color:var(--muted)}
+  .impact-bar-label strong{font-family:"IBM Plex Mono",monospace;color:var(--ink);font-size:.82rem}
+  .impact-track{height:10px;background:var(--surface-2);border-radius:999px;overflow:hidden;margin-top:.28rem}
+  .impact-track span{display:block;height:100%;border-radius:999px}
+  .impact-before{background:var(--faint);width:100%}
+  .impact-after{background:var(--accent);width:4.11%;min-width:8px}
+  .impact-foot{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line-soft);padding-top:1rem;gap:1rem}
+  .impact-foot div{display:flex;flex-direction:column;gap:.3rem}
+  .impact-foot strong{font-family:"IBM Plex Mono",monospace;font-size:1.35rem;color:var(--ink)}
+  .impact-foot span{font-size:.72rem;color:var(--muted)}
+  .impact-method{font-size:.68rem;line-height:1.4;color:var(--faint);margin:.95rem 0 0}
+  @media(max-width:440px){.impact-foot{grid-template-columns:1fr 1fr;gap:.65rem}.impact-foot strong{font-size:1.15rem}}
+
+  .project-preview{border:1px solid var(--line-soft);background:var(--surface-2);border-radius:10px;overflow:hidden;margin:1rem 0 0}
+  .project-preview img{display:block;width:100%;max-height:225px;object-fit:contain;background:var(--surface-2)}
+  .card.feature .project-preview img{max-height:320px}
+  .project-preview figcaption{padding:.65rem .85rem;color:var(--muted);font-size:.75rem;border-top:1px solid var(--line-soft)}
+  @media(max-width:440px){.project-preview img{max-height:180px}.card.feature .project-preview img{max-height:225px}}
 
   /* ============ MARQUEE / STACK ============ */
   .stack { border-block: 1px solid var(--line-soft); padding: 1.1rem 0; }
@@ -404,6 +403,7 @@
       <a class="navlink" href="#projetos"><span class="lpt">Projetos</span><span class="len">Projects</span></a>
       <a class="navlink" href="#experiencia"><span class="lpt">Experiência</span><span class="len">Experience</span></a>
       <a class="navlink" href="#contato"><span class="lpt">Contato</span><span class="len">Contact</span></a>
+      <a class="navlink" href="curriculo.html"><span class="lpt">Currículo</span><span class="len">Résumé</span></a>
       <button class="toggle" id="langToggle" aria-label="Switch language / Trocar idioma" title="English / Português"><span class="lpt">EN</span><span class="len">PT</span></button>
       <button class="toggle" id="themeToggle" aria-label="Alternar tema" title="Alternar tema claro/escuro">
         <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.5M12 19.5V22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M2 12h2.5M19.5 12H22M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg>
@@ -438,6 +438,9 @@
             <span class="lpt">Ver projetos</span><span class="len">View projects</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
+          <a class="btn" href="curriculo.html" aria-label="Ver currículo profissional">
+            <span class="lpt">Ver currículo</span><span class="len">View résumé</span>
+          </a>
           <a class="btn" href="https://github.com/JoaoMonteiroUNESP" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.6 2 12.3c0 4.5 2.9 8.3 6.8 9.7.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.2-3.4-1.2-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.6 2.4 1.1 3 .8.1-.7.4-1.1.6-1.4-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.7 1a9.3 9.3 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.3 4.7-4.6 5 .4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5 3.9-1.4 6.8-5.2 6.8-9.7C22 6.6 17.5 2 12 2z"/></svg>
             GitHub
@@ -449,19 +452,27 @@
         </div>
       </div>
 
-      <!-- instrument panel -->
-      <div class="panel" aria-hidden="true">
-        <div class="panel-head">
-          <span>RF&nbsp;·&nbsp;5G&nbsp;NSA&nbsp;walk-test</span>
-          <span class="live"><span class="pulse"></span><span class="lpt">ilustrativo</span><span class="len">illustrative</span></span>
+      <!-- Measured impact: 43-report assessment -->
+      <aside class="impact-panel" aria-label="Resultado mensurável de automação na BASF">
+        <div class="impact-kicker"><span class="lpt">BASF · Automação de relatórios</span><span class="len">BASF · Report automation</span><span class="impact-year">2026</span></div>
+        <p class="impact-caption"><span class="lpt">Redução do tempo médio por relatório</span><span class="len">Reduction in average time per report</span></p>
+        <div class="impact-number">95,89<span>%</span></div>
+        <div class="impact-bars" aria-label="Antes: 36,49 minutos. Depois: 1,50 minuto.">
+          <div class="impact-bar-item">
+            <div class="impact-bar-label"><span class="lpt">Antes</span><span class="len">Before</span><strong>36,49 min</strong></div>
+            <div class="impact-track"><span class="impact-before"></span></div>
+          </div>
+          <div class="impact-bar-item">
+            <div class="impact-bar-label"><span class="lpt">Depois</span><span class="len">After</span><strong>1,50 min</strong></div>
+            <div class="impact-track"><span class="impact-after"></span></div>
+          </div>
         </div>
-        <canvas id="signal" width="520" height="260"></canvas>
-        <div class="readout">
-          <div class="cell"><div class="k">RSRP</div><div class="v">−<span id="rsrp">87</span> dBm</div></div>
-          <div class="cell"><div class="k">SINR</div><div class="v"><span id="sinr">14</span> dB</div></div>
-          <div class="cell"><div class="k">Throughput</div><div class="v"><span id="thr">218</span> Mb/s</div></div>
+        <div class="impact-foot">
+          <div><strong>43</strong><span class="lpt">relatórios avaliados</span><span class="len">reports assessed</span></div>
+          <div><strong>25h05</strong><span class="lpt">economia estimada no lote</span><span class="len">estimated batch time saved</span></div>
         </div>
-      </div>
+        <p class="impact-method"><span class="lpt">Estimativas calculadas com base nos tempos médios da avaliação.</span><span class="len">Estimates based on average times from the assessed batch.</span></p>
+      </aside>
     </div>
   </div>
 
@@ -531,7 +542,7 @@
           </figure>
           <aside class="facts" aria-label="Informações rápidas">
             <div class="fact"><div class="k"><span class="lpt">Formação</span><span class="len">Education</span></div><div class="v"><span class="lpt">Eng. de Produção · FEG-UNESP <span style="color:var(--faint)">(prev. 2028)</span></span><span class="len">Production Eng. · FEG-UNESP <span style="color:var(--faint)">(exp. 2028)</span></span></div></div>
-            <div class="fact"><div class="k"><span class="lpt">Foco</span><span class="len">Focus</span></div><div class="v"><span class="lpt">Data &amp; Analytics · Automação</span><span class="len">Data &amp; Analytics · Automation</span></div></div>
+            <div class="fact"><div class="k"><span class="lpt">Foco</span><span class="len">Focus</span></div><div class="v"><span class="lpt">IA aplicada · Automação · Software</span><span class="len">Applied AI · Automation · Software</span></div></div>
             <div class="fact"><div class="k"><span class="lpt">Preferência</span><span class="len">Preference</span></div><div class="v"><span class="lpt">Remoto · Flexível</span><span class="len">Remote preferred · Flexible</span></div></div>
             <div class="fact"><div class="k"><span class="lpt">Base</span><span class="len">Based in</span></div><div class="v"><span class="lpt">Guaratinguetá · SP · Brasil</span><span class="len">Guaratinguetá · SP · Brazil</span></div></div>
             <div class="fact"><div class="k"><span class="lpt">Situação</span><span class="len">Status</span></div><div class="v"><span class="lpt">Aberto a oportunidades</span><span class="len">Open to opportunities</span></div></div>
@@ -547,7 +558,7 @@
       <div class="sec-head">
         <p class="eyebrow"><span class="lpt">Trabalho selecionado</span><span class="len">Selected work</span></p>
         <h2><span class="lpt">Projetos</span><span class="len">Projects</span></h2>
-        <p><span class="lpt">Projetos de software, automação e dados, com código aberto quando permitido. A pesquisa 5G possui um estudo de caso público, mas seu repositório de desenvolvimento é privado.</span><span class="len">Software, automation and data projects with public source code where permitted. The 5G research has a public case study, while its development repository remains private.</span></p>
+        <p><span class="lpt">Aplicações, automações e pesquisa: projetos que transformam necessidades reais em soluções verificáveis, com documentação e demonstrações.</span><span class="len">Applications, automations and research turning real needs into verifiable solutions, supported by documentation and demos.</span></p>
       </div>
 
       <div class="projects">
@@ -563,6 +574,10 @@
             automações e testes unitários e E2E. A <strong>demo pública roda com dados
             sintéticos</strong>; a instância real não é versionada.</span><span class="len">Full-stack with a <strong>local-first architecture</strong> — data stays on the user's machine, with no external services. It brings together finances (OFX / CSV / PDF import), inventory, shopping and tasks, with Prisma data modeling, automations and unit and E2E tests. The <strong>public demo runs on synthetic data</strong>; the real instance isn't versioned.</span>
           </p>
+          <figure class="project-preview">
+            <img loading="lazy" decoding="async" src="https://raw.githubusercontent.com/JoaoMonteiroUNESP/casaos-demo/main/docs/screenshots/01-dashboard.png" alt="CasaOS: dashboard de finanças e tarefas com dados sintéticos.">
+            <figcaption><span class="lpt">CasaOS: dashboard de finanças e tarefas com dados sintéticos.</span><span class="len">CasaOS: finance and task dashboard using synthetic demo data.</span></figcaption>
+          </figure>
           <div class="techs">
             <span class="tech">Next.js</span><span class="tech">React</span>
             <span class="tech">TypeScript</span><span class="tech">Prisma</span><span class="tech">SQLite</span>
@@ -583,7 +598,11 @@
           </div>
           <h3><span class="lpt">Análise Financeira Executiva</span><span class="len">Executive Financial Analysis</span></h3>
           <p class="oneline"><span class="lpt">Auditoria de demonstrativos públicos: dados reconciliados, indicadores validados.</span><span class="len">Public-statement auditing: reconciled data, validated indicators.</span></p>
-          <p class="desc"><span class="lpt">Refatora um app monolítico numa base reproduzível: audita as fontes contábeis, reconcilia reapresentações, recalcula os indicadores (sem confiar na aba original) e roda <strong>validações automáticas</strong> (equação patrimonial, DRE, CAPEX, FCF). Textos analíticos <strong>determinísticos — sem diagnóstico gerado por IA</strong>. Apenas dados públicos.</span><span class="len">Refactors a monolithic app into a reproducible codebase: it audits the accounting sources, reconciles restatements, recomputes indicators (without trusting the original tab) and runs <strong>automatic validations</strong> (balance equation, income statement, CAPEX, FCF). <strong>Deterministic</strong> analytical text — <strong>no AI-generated diagnosis</strong>. Public data only.</span></p>
+          <p class="desc"><span class="lpt">Refatora um app monolítico numa base reproduzível: audita as fontes contábeis, reconcilia reapresentações, recalcula os indicadores (sem confiar na aba original) e roda <strong>validações automáticas</strong> (equação patrimonial, DRE, CAPEX, FCF). Textos analíticos <strong>reproduzíveis</strong>, com rastreabilidade e validações. Apenas dados públicos.</span><span class="len">Refactors a monolithic app into a reproducible codebase: it audits the accounting sources, reconciles restatements, recomputes indicators (without trusting the original tab) and runs <strong>automatic validations</strong> (balance equation, income statement, CAPEX, FCF). <strong>Reproducible</strong> analytical narratives with traceability and validations. Public data only.</span></p>
+          <figure class="project-preview">
+            <img loading="lazy" decoding="async" src="https://raw.githubusercontent.com/JoaoMonteiroUNESP/financial-analysis-dashboard/main/docs/screenshots/overview.png" alt="Dashboard financeiro publicado com demonstrações públicas e validações.">
+            <figcaption><span class="lpt">Dashboard financeiro publicado com demonstrações públicas e validações.</span><span class="len">Published financial dashboard with public-statement analysis and validations.</span></figcaption>
+          </figure>
           <div class="techs">
             <span class="tech">Python</span><span class="tech">Streamlit</span>
             <span class="tech">pandas</span><span class="tech">Plotly</span>
@@ -641,6 +660,10 @@
             confiança é baixa, para não transformar uma probabilidade em decisão
             arbitrária. Acompanha métricas comportamentais por sessão.</span><span class="len">Computer vision applied to behavior in a controlled driving simulation. Instead of just a label, each prediction exposes the <strong>rule and the evidence</strong> behind it — closed eyes, PERCLOS, yawning, visible phone — and there's an <strong>abstention layer</strong> when confidence is low, so a probability isn't turned into an arbitrary decision. It tracks per-session behavioral metrics.</span>
           </p>
+          <figure class="project-preview">
+            <img loading="lazy" decoding="async" src="https://raw.githubusercontent.com/JoaoMonteiroUNESP/monitor-do-condutor/main/reports/comparacao_modelos.png" alt="Comparação de modelos com dados sintéticos para validar o pipeline do Monitor do Condutor.">
+            <figcaption><span class="lpt">Comparação de modelos com dados sintéticos para validar o pipeline do Monitor do Condutor.</span><span class="len">Synthetic-data model comparison used to validate the Driver Monitor pipeline.</span></figcaption>
+          </figure>
           <div class="techs">
             <span class="tech">Python</span><span class="tech">OpenCV</span>
             <span class="tech">MediaPipe</span><span class="tech">YOLO</span><span class="tech">scikit-learn</span>
@@ -846,86 +869,7 @@
     });
   })();
 
-  // signal panel — faint RF telemetry visualization
-  (function () {
-    var canvas = document.getElementById('signal');
-    if (!canvas) return;
-    var ctx = canvas.getContext('2d');
-    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var W, H, dpr;
 
-    function css(v) { return getComputedStyle(document.documentElement).getPropertyValue(v).trim(); }
-
-    function resize() {
-      dpr = Math.min(window.devicePixelRatio || 1, 2);
-      W = canvas.clientWidth; H = canvas.clientHeight;
-      canvas.width = W * dpr; canvas.height = H * dpr;
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    }
-    resize();
-    window.addEventListener('resize', resize);
-
-    // scatter points (coverage samples)
-    var pts = [];
-    for (var i = 0; i < 46; i++) {
-      pts.push({ x: Math.random(), y: Math.random(), r: 1.2 + Math.random() * 2.4, a: 0.25 + Math.random() * 0.5 });
-    }
-
-    var t = 0;
-    function frame() {
-      var line = css('--plot') || '#0f6d6b';
-      var warm = css('--plot-2') || '#b5701f';
-      var grid = css('--grid-line') || 'rgba(0,0,0,.08)';
-      ctx.clearRect(0, 0, W, H);
-
-      // grid
-      ctx.strokeStyle = grid; ctx.lineWidth = 1;
-      for (var gx = 0; gx <= W; gx += W / 8) { ctx.beginPath(); ctx.moveTo(gx, 0); ctx.lineTo(gx, H); ctx.stroke(); }
-      for (var gy = 0; gy <= H; gy += H / 5) { ctx.beginPath(); ctx.moveTo(0, gy); ctx.lineTo(W, gy); ctx.stroke(); }
-
-      // scatter
-      for (var i = 0; i < pts.length; i++) {
-        var p = pts[i];
-        var warmPt = (i % 6 === 0);
-        ctx.beginPath();
-        ctx.globalAlpha = warmPt ? 0.7 : p.a;
-        ctx.fillStyle = warmPt ? warm : line;
-        ctx.arc(p.x * W, p.y * H, p.r, 0, Math.PI * 2);
-        ctx.fill();
-      }
-      ctx.globalAlpha = 1;
-
-      // waveform
-      ctx.beginPath();
-      for (var x = 0; x <= W; x += 3) {
-        var nx = x / W;
-        var y = H / 2
-          + Math.sin(nx * 9 + t) * (H * 0.16)
-          + Math.sin(nx * 21 + t * 1.7) * (H * 0.06)
-          + Math.sin(nx * 3 - t * 0.6) * (H * 0.09);
-        if (x === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
-      }
-      ctx.strokeStyle = line; ctx.lineWidth = 2; ctx.lineJoin = 'round';
-      ctx.stroke();
-
-      // leading dot
-      var lx = W, ly = H / 2 + Math.sin(9 + t) * (H * 0.16) + Math.sin(21 + t * 1.7) * (H * 0.06) + Math.sin(3 - t * 0.6) * (H * 0.09);
-      ctx.beginPath(); ctx.fillStyle = line; ctx.arc(lx - 2, ly, 3, 0, Math.PI * 2); ctx.fill();
-
-      if (!reduced) { t += 0.02; requestAnimationFrame(frame); }
-    }
-    frame();
-
-    // animate readouts subtly
-    if (!reduced) {
-      setInterval(function () {
-        var jitter = function (base, spread) { return Math.round(base + (Math.random() - 0.5) * spread); };
-        var r = document.getElementById('rsrp'); if (r) r.textContent = jitter(87, 6);
-        var s = document.getElementById('sinr'); if (s) s.textContent = jitter(14, 4);
-        var th = document.getElementById('thr'); if (th) th.textContent = jitter(218, 40);
-      }, 1600);
-    }
-  })();
 </script>
 </body>
 </html>
