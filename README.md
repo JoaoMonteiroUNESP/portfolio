@@ -1,11 +1,13 @@
 <!-- Language: English (below: Português) -->
 **English** · [Português](#-português)
 
+**Professional résumé (PT/EN):** [View / Print to PDF](https://joaomonteirounesp.github.io/portfolio/curriculo.html)
+
+
 # Portfolio — João Monteiro
 
 Personal portfolio site focused on **AI Builder, software development, automation, data and Production Engineering**.
-Single static page with no build step — just `index.html` (HTML + CSS + a pure-JavaScript
-telemetry canvas), with a **PT/EN language toggle**, light/dark themes and IBM Plex typography.
+Static portfolio with no build step — `index.html` and a print-friendly `curriculo.html`, with **PT/EN language toggle**, light/dark themes, real portfolio project screenshots and a BASF automation impact panel (43 reports, 95.89% lower mean processing time).
 
 🔴 **Live:** https://joaomonteirounesp.github.io/portfolio/
 
@@ -17,7 +19,7 @@ telemetry canvas), with a **PT/EN language toggle**, light/dark themes and IBM P
 
 ## Run locally
 
-It's static, so just open `index.html` in a browser — or serve the folder:
+It's static: open `index.html` in a browser or serve the folder, including `curriculo.html`:
 
 ```bash
 python -m http.server 8000
@@ -36,9 +38,9 @@ blank, and click **Deploy**.
 # 🇧🇷 Português
 
 Site pessoal de portfólio com foco em **AI Builder, desenvolvimento de software, automação, dados e Engenharia de Produção**.
-Página única, estática e sem dependências de build — apenas `index.html`
-(HTML + CSS + um canvas de telemetria em JavaScript puro), com **alternância de idioma
-PT/EN**, tema claro/escuro e tipografia IBM Plex.
+Portfólio estático sem dependências de build, composto por `index.html` e
+`curriculo.html`, com **alternância de idioma PT/EN**, tema claro/escuro,
+prévia visual dos projetos e painel de resultado da automação da BASF.
 
 🔴 **No ar:** https://joaomonteirounesp.github.io/portfolio/
 
